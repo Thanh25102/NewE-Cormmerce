@@ -1,4 +1,4 @@
-package com.buimanhthanh.mapper;
+package com.buimanhthanh.mapper.model;
 
 import com.buimanhthanh.entity.Access;
 import com.buimanhthanh.model.AccessDTO;

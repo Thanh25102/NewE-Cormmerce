@@ -1,12 +1,14 @@
 package com.buimanhthanh.service.impl;
 
-import com.buimanhthanh.mapper.AccessMapper;
+import com.buimanhthanh.entity.Access;
+import com.buimanhthanh.mapper.model.AccessMapper;
 import com.buimanhthanh.model.AccessDTO;
 import com.buimanhthanh.repository.AccessRepo;
 import com.buimanhthanh.service.IAccessService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,8 +23,28 @@ public class AccessService implements IAccessService {
 
     @Override
     public List<AccessDTO> findAll() {
-        return accessRepo.findAll()
-                .stream().map(accessMapper)
-                .collect(Collectors.toList());
+        return accessRepo.findAll().stream().map(accessMapper).collect(Collectors.toList());
+    }
+
+    @Override
+    public AccessDTO findById(Integer id) {
+        Optional<Access> optAccess = accessRepo.findById(id);
+        return optAccess.isPresent() ?
+                accessMapper.apply(optAccess.get()) : null;
+    }
+
+    @Override
+    public AccessDTO saveOrUpdate(AccessDTO access) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
+
+    @Override
+    public void deletes(List<Integer> ids) {
+
     }
 }

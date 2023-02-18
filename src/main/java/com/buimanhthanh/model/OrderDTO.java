@@ -6,7 +6,7 @@ public record OrderDTO(
         String orderStatus,
         Integer ammount,
         String paymentMethod,
-        java.sql.Timestamp createTime,
+        java.util.Date createTime,
         Integer discountCodeId,
         String phone,
         String shipingAddress,

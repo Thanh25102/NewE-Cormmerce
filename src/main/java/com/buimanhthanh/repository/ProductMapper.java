@@ -1,4 +1,4 @@
-package com.buimanhthanh.mapper;
+package com.buimanhthanh.repository;
 
 import com.buimanhthanh.entity.Product;
 import com.buimanhthanh.model.ProductDTO;

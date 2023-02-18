@@ -34,7 +34,7 @@ public class Role implements Serializable {
     @OneToMany(mappedBy = "roleById")
     private Collection<Account> accountByRoleId;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(
             name = "permission",
             joinColumns = {

@@ -1,0 +1,27 @@
+GET http://localhost:8080/thanh25102/v1/api/accounts
+Content-Type: application/json
+###
+GET http://localhost:8080/thanh25102/v1/api/accounts/search?username=AdminThanh&email=thanh12@gmail.com
+Content-Type: application/json
+###
+GET http://localhost:8080/thanh25102/v1/api/accounts/search?username=AdminThanh
+Content-Type: application/json
+###
+GET http://localhost:8080/thanh25102/v1/api/accounts/search?email=thanh12@gmail.com
+Content-Type: application/json
+###
+
+POST http://localhost:8080/thanh25102/v1/api/accounts
+Content-Type: application/json
+{
+      "username": "Test1234",
+      "password": "$2a$12$NNbCQSF1CP7mJtGSp57JROD6m3F3t26qHHKZf175EWyGPd0A/EpO6",
+      "enabled": true,
+      "email": "thanh123433334@gmail.com",
+      "phone": "1234",
+      "fullName": "Bui Manh Thanh",
+      "address": "Sai gon dau co lanh",
+      "rankAccount": "member",
+      "avatar": null,
+      "roleId": 2
+}

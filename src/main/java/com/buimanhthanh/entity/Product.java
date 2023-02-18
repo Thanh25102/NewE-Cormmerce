@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DynamicUpdate
 @Table(name = "product")
 @Data
 @AllArgsConstructor
@@ -50,5 +52,5 @@ public class Product {
     @OneToMany(mappedBy = "productByProductId", fetch = FetchType.LAZY, cascade = {
             CascadeType.REMOVE
     })
-    private List<ProductDetail> productDetailsById = new ArrayList<>();
+    private List<ProductDetail> productDetailsById;
 }

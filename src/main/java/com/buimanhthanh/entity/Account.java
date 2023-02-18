@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,11 +14,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@DynamicUpdate
 @Table(name = "account")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account implements UserDetails {
+public class Account {
     /**
      *
      */
@@ -56,34 +58,8 @@ public class Account implements UserDetails {
     @OneToMany(mappedBy = "accountByUsername", fetch = FetchType.LAZY)
     private Set<Order> ordersByUsername;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Role roleById;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> auths = new HashSet<>();
-        auths.add(new SimpleGrantedAuthority(roleById.getAuthority()));
-        return auths;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return this.enabled4;
-    }
 }

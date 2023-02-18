@@ -31,5 +31,5 @@ public class Access {
     @Length(min = 0, max = 255, message = "{access.description.err}")
     private String description;
     @ManyToMany(mappedBy = "accesses")
-    private List<Role> roles = new ArrayList<>();
+    private List<Role> roles;
 }
