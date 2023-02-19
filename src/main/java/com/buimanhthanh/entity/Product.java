@@ -41,11 +41,11 @@ public class Product {
     @Column(name = "represent", nullable = true, length = 255)
     private String represent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
     private Category categoryByCategoryId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "discount_id", referencedColumnName = "id")
     private Discount discountByDiscountId;
 
